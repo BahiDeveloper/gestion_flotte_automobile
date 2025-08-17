@@ -1,0 +1,173 @@
+/* Dashboard Specific Styles */
+.dashboard-section {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.dashboard-section:hover {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    transform: translateY(-5px);
+}
+
+.dashboard-section h2 {
+    color: #2c3e50;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+/* Notifications Styles */
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 10px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.notification:hover {
+    background-color: #f1f3f5;
+}
+
+.notification-icon {
+    font-size: 24px;
+    margin-right: 15px;
+    width: 40px;
+    text-align: center;
+}
+
+.notification-icon.notification-warning {
+    color: #f39c12;
+}
+
+.notification-icon.notification-danger {
+    color: #e74c3c;
+}
+
+.notification-icon.notification-info {
+    color: #3498db;
+}
+
+/* Vehicle Status Styles */
+.vehicle-status {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.vehicle-status-card {
+    flex: 1;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.vehicle-status-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.vehicle-status-card i {
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.vehicle-status-available {
+    color: #2ecc71;
+}
+
+.vehicle-status-in-use {
+    color: #f39c12;
+}
+
+.vehicle-status-maintenance {
+    color: #3498db;
+}
+
+.vehicle-status-out-of-service {
+    color: #e74c3c;
+}
+
+.vehicle-status-card h5 {
+    color: #34495e;
+    margin-bottom: 5px;
+}
+
+.vehicle-status-card p {
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+/* Quick Links Styles */
+.quick-links {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.quick-link {
+    flex: 1;
+    text-align: center;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.quick-link:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    color: #3498db;
+}
+
+.quick-link i {
+    font-size: 36px;
+    margin-bottom: 10px;
+    color: #3498db;
+}
+
+.quick-link p {
+    margin: 0;
+    font-weight: 600;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .vehicle-status,
+    .quick-links {
+        flex-direction: column;
+    }
+
+    .vehicle-status-card,
+    .quick-link {
+        margin-bottom: 15px;
+    }
+}
+
+/* Additional Utility Classes */
+.text-muted {
+    color: #6c757d;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.dashboard-section {
+    animation: fadeIn 0.5s ease-out;
+}

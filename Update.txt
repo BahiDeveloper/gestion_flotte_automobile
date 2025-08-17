@@ -1,0 +1,8 @@
+    <!-- Code de débogage à ajouter temporairement après la section fil d'Ariane -->
+    <div class="debug-section mb-3"
+        style="background-color: #ffe; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+        <h6><i class="fas fa-bug me-2"></i>Section de débogage (à supprimer en production)</h6>
+        <p><strong>Session ID:</strong> <?= session_id() ?></p>
+        <p><strong>Session variables:</strong></p>
+        <pre><?php print_r($_SESSION); ?></pre>
+    </div>

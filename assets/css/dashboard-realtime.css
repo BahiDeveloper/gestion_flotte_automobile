@@ -1,0 +1,144 @@
+/* dashboard-realtime.css - Styles pour le tableau de bord dynamique */
+
+/* Animation pour le changement de statistiques */
+.stat-changing {
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.stat-highlight {
+    animation: highlight-pulse 1s ease;
+}
+
+@keyframes highlight-pulse {
+    0% {
+        color: inherit;
+        transform: scale(1);
+    }
+
+    50% {
+        color: #0d6efd;
+        transform: scale(1.1);
+    }
+
+    100% {
+        color: inherit;
+        transform: scale(1);
+    }
+}
+
+/* Animation pour les nouveaux éléments */
+.fade-in-animation {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Styles pour les cartes de statistiques */
+.dashboard-card {
+    transition: all 0.3s ease;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles pour les icônes dans les cartes */
+.dashboard-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.dashboard-card:hover .dashboard-icon {
+    transform: scale(1.1);
+}
+
+/* Styles spécifiques pour chaque carte */
+.dashboard-card.vehicles {
+    border-left: 4px solid #28a745;
+}
+
+.dashboard-card.drivers {
+    border-left: 4px solid #17a2b8;
+}
+
+.dashboard-card.maintenance {
+    border-left: 4px solid #ffc107;
+}
+
+.dashboard-card.reservations {
+    border-left: 4px solid #dc3545;
+}
+
+/* Animations pour les alertes de documents */
+.doc-alert {
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+
+.doc-alert:hover {
+    transform: translateX(5px);
+}
+
+/* Animations pour les éléments de maintenance */
+.maintenance-item {
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+}
+
+.maintenance-item:hover {
+    background-color: #f8f9fa;
+    border-left-color: #17a2b8;
+    transform: translateX(5px);
+}
+
+/* Toast notifications */
+.toast-container {
+    z-index: 1060;
+}
+
+.toast {
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .dashboard-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 1.2rem;
+    }
+
+    .dashboard-card h2 {
+        font-size: 1.5rem;
+    }
+}

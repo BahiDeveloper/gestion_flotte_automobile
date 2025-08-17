@@ -1,0 +1,150 @@
+/* Animation de pulsation pour les nouvelles notifications */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.notification-icon-container {
+    position: relative;
+    display: inline-block;
+    padding: 5px;
+}
+
+.notification-badge {
+    position: absolute;
+    top: -3px;
+    right: -3px;
+    font-size: 0.65rem;
+    padding: 0.25rem 0.4rem;
+    min-width: 18px;
+    min-height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.pulse-animation {
+    animation: pulse 0.7s infinite;
+}
+
+/* Style pour la dropdown des notifications */
+.notification-dropdown {
+    width: 320px;
+    padding: 0;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.notification-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    padding: 0.5rem 1rem;
+}
+
+.notification-item {
+    border-left: 3px solid transparent;
+    transition: background-color 0.2s ease;
+}
+
+.notification-item:hover {
+    background-color: #f8f9fa;
+    border-left-color: #0d6efd;
+}
+
+.notification-icon {
+    margin-right: 15px;
+}
+
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style pour les notifications non lues */
+.notification-item.unread {
+    background-color: rgba(13, 110, 253, 0.05);
+    border-left-color: #0d6efd;
+    font-weight: 600;
+}
+
+/* Style pour les notifications lues */
+.notification-item.read {
+    background-color: transparent;
+    opacity: 0.8;
+    font-weight: normal;
+}
+
+/* Animation d'entrée pour les nouvelles notifications */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.notification-new {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Styles spécifiques pour les différents types de notifications */
+.icon-circle.bg-reservation {
+    background-color: #ffc107;
+    /* Jaune pour les réservations */
+}
+
+.icon-circle.bg-deplacement {
+    background-color: #28a745;
+    /* Vert pour les déplacements */
+}
+
+.icon-circle.bg-maintenance {
+    background-color: #dc3545;
+    /* Rouge pour les maintenances */
+}
+
+.icon-circle.bg-document {
+    background-color: #007bff;
+    /* Bleu pour les documents */
+}
+
+/* Ajout de style pour l'en-tête des notifications */
+.notification-dropdown .dropdown-header {
+    font-size: 0.8rem;
+    color: #6c757d;
+    padding: 0.5rem 1rem;
+    margin-top: 0;
+    margin-bottom: 0;
+    background-color: #f8f9fa;
+}
+
+/* Style pour le bouton "Tout marquer comme lu" */
+.notification-header .btn-outline-primary {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+}
+
+/* Responsive fixes */
+@media (max-width: 576px) {
+    .notification-dropdown {
+        width: 280px;
+    }
+}

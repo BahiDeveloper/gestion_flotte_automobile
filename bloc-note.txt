@@ -1,0 +1,240 @@
+-----------erreur : ----------
+erreur dans le sweet alert  : "Erreur lors du chargement des chauffeurs disponibles : Unexpected token '<', ""
+----------------------------------
+                <!-- Assignations demandées -->
+                <div class="tab-pane fade show active" id="current-assignments" role="tabpanel"
+                    aria-labelledby="current-assignments-tab">
+                    <h4>
+                        <i class="fas fa-spinner"></i>
+                        Assignations demandées
+                    </h4>
+                    <hr>
+                    <div class="d-flex flex-wrap gap-5 my-3 vehicle-card">
+
+                        <?php foreach ($assignations_demande as $assignation): ?>
+                            <div class="card mb-3">
+
+                                <div class="card-header">
+
+                                    <div class="card-img logo_marque_vehicule">
+                                        <?php if (!empty($assignation['logo_marque_vehicule'])): ?>
+                                            <img src="uploads/vehicules/logo_marque/<?= htmlspecialchars($vehicule['logo_marque_vehicule']) ?>"
+                                                class="img-fluid" alt="Photo du vehicule">
+                                        <?php else: ?>
+                                            <span class="badge badge-offline">Aucune photo</span>
+                                        <?php endif; ?>
+                                    </div>
+
+                                    <h5 class="card-title"><?= htmlspecialchars($assignation['marque']) ?>
+                                        <?= htmlspecialchars($assignation['modele']) ?>
+                                    </h5>
+                                </div>
+
+                                <div class="card-body">
+                                    <p class="card-text">Assigné à : ---
+                                    </p>
+                                    <p class="card-text">Objet de la demande :
+                                        <?= htmlspecialchars($assignation['objet_demande']) ?>
+                                    </p>
+                                    <p class="card-text">Trajet :
+                                        <?= htmlspecialchars($assignation['trajet']) ?>
+                                    </p>
+                                    <p class="card-text">Date de départ prévue :
+                                        <?= htmlspecialchars($assignation['date_depart_prevue']) ?>
+                                    </p>
+
+                                    <p class="card-text">Date d'arrivée prévue :
+                                        <?= htmlspecialchars($assignation['date_arrivee_prevue']) ?>
+                                    </p>
+                                </div>
+
+                                <div class="card-footer">
+
+<!-- Dans gestion_vehicules.php, modifier le bouton d'acceptation -->
+<a href="#" class="btn btn-success btn-action btnAccepterAssignation m-1"
+    data-bs-toggle="modal"
+    data-assignation-id="<?= htmlspecialchars($assignation['assignation_id']); ?>"
+    data-date-depart="<?= htmlspecialchars($assignation['date_depart_prevue']); ?>"
+    data-date-arrivee="<?= htmlspecialchars($assignation['date_arrivee_prevue']); ?>"
+    data-bs-target="#assignChauffeurModal">
+    <i class="fas fa-check-circle me-2"></i>Accepter
+</a>
+
+                                    <!-- Modifier assignation -->
+                                    <button class="btn btn-warning btn-action m-1 btnModifierAssignation"
+                                        data-bs-toggle="modal" data-bs-target="#modifierAssignationModal"
+                                        data-id="<?= $assignation['assignation_id'] ?>"
+                                        data-chauffeur="<?= $assignation['id_chauffeur'] ?>"
+                                        data-vehicule="<?= $assignation['id_vehicule'] ?>"
+                                        data-trajet="<?= $assignation['trajet'] ?>"
+                                        data-date_depart="<?= $assignation['date_depart_prevue'] ?>"
+                                        data-date_arrivee="<?= $assignation['date_arrivee_prevue'] ?>">
+                                        <i class="fas fa-edit"></i>
+                                        Modifier
+                                    </button>
+
+                                    <button class="btn btn-danger btn-action btnSupprimerAssignation"
+                                        data-assignation-id="<?= $assignation['assignation_id']; ?>">
+                                        <i class="fas fa-times me-2"></i>Supprimer
+                                    </button>
+
+                                </div>
+
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+-----------------------------------------------------
+<!-- Modal pour assigner un chauffeur -->
+<div class="modal fade" id="assignChauffeurModal" tabindex="-1" aria-labelledby="assignChauffeurModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="assignChauffeurModalLabel">Assignation du chauffeur</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="actions/valider_demande_assignation.php" method="POST">
+                    <input type="hidden" id="assignation_id" name="assignation_id">
+                    <input type="hidden" id="date_depart_prevue" name="date_depart_prevue">
+                    <input type="hidden" id="date_arrivee_prevue" name="date_arrivee_prevue">
+                    <div class="mb-3">
+                        <label for="chauffeur" class="form-label">Choisir un chauffeur</label>
+                        <select class="form-select" id="chauffeur" name="chauffeur" required>
+                            <option value="" disabled selected>Choisissez un chauffeur</option>
+                            <?php foreach ($chauffeurs as $chauffeur): ?>
+                                <option value="<?= $chauffeur['id'] ?>"><?= htmlspecialchars($chauffeur['nom']) ?> -
+                                    <?= htmlspecialchars($chauffeur['prenom']) ?>
+                                </option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Assigner</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+-----------------------------
+
+
+<?php
+include_once("database" . DIRECTORY_SEPARATOR . "config.php");
+
+// Définir le type de contenu en JSON si format=json est demandé
+if (isset($_GET['format']) && $_GET['format'] === 'json') {
+    header('Content-Type: application/json');
+}
+
+try {
+    // Récupérer les paramètres de la plage horaire
+    $date_depart = $_POST['date_depart_prevue'] ?? null;
+    $date_arrivee = $_POST['date_arrivee_prevue'] ?? null;
+    
+    if ($date_depart && $date_arrivee) {
+        // Requête pour obtenir les chauffeurs disponibles en tenant compte des plages horaires
+        $sql = "SELECT DISTINCT c.* 
+                FROM chauffeurs c 
+                WHERE  NOT EXISTS (
+                    SELECT 1 
+                    FROM deplacements a 
+                    WHERE a.id_chauffeur = c.id 
+                    AND (
+                        (a.date_depart_prevue <= :date_depart_prevue AND a.date_arrivee_prevue >= :date_depart_prevue)
+                        OR 
+                        (a.date_depart_prevue <= :date_depart_prevue AND a.date_arrivee_prevue >= :date_arrivee_prevue)
+                        OR 
+                        (a.date_depart_prevue >= :date_depart_prevue AND a.date_arrivee_prevue <= :date_arrivee_prevue)
+                    )
+                )";
+                
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':date_depart_prevue' => $date_depart,
+            ':date_arrivee_prevue' => $date_arrivee
+        ]);
+        
+        $chauffeurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        // Retourner les résultats en JSON pour l'AJAX
+        header('Content-Type: application/json');
+        echo json_encode($chauffeurs);
+        exit();
+    } else {
+        // Si pas de dates spécifiées, retourner tous les chauffeurs disponibles
+        $sql = "SELECT * FROM chauffeurs WHERE disponibilite = 'Disponible'";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute();
+        $chauffeurs = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+} catch (PDOException $e) {
+    if (isset($_POST['date_depart_prevue'])) {
+        // Si c'est une requête AJAX
+        header('Content-Type: application/json');
+        echo json_encode(['error' => $e->getMessage()]);
+        exit();
+    }
+    
+    echo "<script>
+        Swal.fire({
+            icon: 'error',
+            title: 'Erreur',
+            text: 'Erreur lors de la récupération des chauffeurs : " . addslashes($e->getMessage()) . "',
+            confirmButtonText: 'OK'
+        });
+    </script>";
+}
+?>
+----------------------------------
+// assets/js/modal_assignation.js
+
+document.addEventListener('DOMContentLoaded', function () {
+    var modalAssignChauffeur = document.getElementById('assignChauffeurModal');
+
+    modalAssignChauffeur.addEventListener('show.bs.modal', function (event) {
+        var button = event.relatedTarget;
+        var assignationId = button.getAttribute('data-assignation-id');
+        var dateDepart = button.getAttribute('data-date-depart');
+        var dateArrivee = button.getAttribute('data-date-arrivee');
+
+        // Mettre à jour le champ caché
+        var modalInput = modalAssignChauffeur.querySelector('#assignation_id');
+        modalInput.value = assignationId;
+
+        // Charger les chauffeurs disponibles pour cette plage horaire
+        fetch('request/request_chauffeurs.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `date_depart_prevue=${encodeURIComponent(dateDepart)}&date_arrivee_prevue=${encodeURIComponent(dateArrivee)}`
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                // Mettre à jour le select des chauffeurs
+                const select = modalAssignChauffeur.querySelector('#chauffeur');
+                select.innerHTML = '<option value="" disabled selected>Choisissez un chauffeur</option>';
+
+                data.forEach(chauffeur => {
+                    const option = document.createElement('option');
+                    option.value = chauffeur.id;
+                    option.textContent = `${chauffeur.nom} - ${chauffeur.prenom}`;
+                    select.appendChild(option);
+                });
+            })
+            .catch(error => {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erreur',
+                    text: 'Erreur lors du chargement des chauffeurs disponibles : ' + error.message
+                });
+            });
+    });
+});
+-----------erreur : ----------
+erreur dans le sweet alert  : "Erreur lors du chargement des chauffeurs disponibles : Unexpected token '<', ""

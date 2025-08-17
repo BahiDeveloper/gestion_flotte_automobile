@@ -1,0 +1,590 @@
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+:root {
+    --color-header: #766f67;
+    --color-h1: #2c3e50;
+}
+
+.navbar-custom {
+    background-color: var(--color-h1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-site {
+    width: 120px;
+    height: auto;
+}
+
+nav.navbar {
+    /* height: 90px; */
+    overflow: hidden;
+    /* background: linear-gradient(to right, #d9d2c5, #766f67); */
+    background: linear-gradient(to right, #efc9c9, #83cbd8);
+}
+
+nav.navbar .container {
+    height: inherit;
+}
+
+@media (min-width: 992px) {
+    nav.navbar{
+        overflow: visible;
+    }
+
+    .my_ul li.nav-item {
+        /* background-color: #fff; */
+    }
+
+    .navbar-nav .nav-item:not(:last-child) {
+        border-right: 1px solid;
+    }
+}
+
+.navbar-custom .navbar-brand {
+    color: #fff;
+    font-weight: bold;
+}
+
+
+.nav-tabs .nav-link {
+    color: var(--color-h1);
+    font-weight: 500;
+    border: none;
+    border-bottom: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--color-h1);
+    border-bottom: 3px solid #3498db;
+}
+
+.nav-tabs .nav-link:hover {
+    color: #3498db;
+}
+
+.section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.section h2 {
+    color: var(--color-h1);
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #34495e;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    border: none;
+    /* padding: 0.75rem 1.5rem; */
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.btn-success {
+    background-color: #27ae60;
+    border: none;
+}
+
+.btn-warning {
+    background-color: #f39c12;
+    border: none;
+}
+
+.btn-danger {
+    background-color: #e74c3c;
+    border: none;
+}
+
+.btn-success:hover,
+.btn-warning:hover,
+.btn-danger:hover {
+    opacity: 0.9;
+}
+
+.card, #calendar {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: .3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-title {
+    color: var(--color-h1);
+    font-weight: 600;
+}
+
+.card-body {
+    overflow: auto;
+}
+
+.badge {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.badge-available,
+.badge-success {
+    background-color: #27ae60;
+}
+
+.badge-in-use {
+    background-color: #f39c12;
+}
+
+.badge-maintenance {
+    background-color: #e74c3c;
+}
+
+h1 {
+    font-weight: 700;
+}
+
+/* ------------ dataTable -------------  */
+button.dt-button {
+    border-radius: 0.5rem !important;
+    padding: 3px 15px;
+}
+
+.buttons-csv.buttons-html5,
+.buttons-copy.buttons-html5,
+button.dt-button.buttons-print {
+    color: #fff;
+    border-color: transparent;
+    /* font-weight: 700; */
+    transition: .3s ease;
+}
+
+.buttons-copy.buttons-html5 {
+    background-color: #0d6efd;
+}
+
+button.dt-button.buttons-copy.buttons-html5:hover {
+    background-color: #0b5ed7;
+}
+
+.buttons-csv.buttons-html5 {
+    background-color: #ffc107;
+}
+
+button.dt-button.buttons-csv.buttons-html5:hover {
+    background-color: #ffca2c;
+}
+
+button.dt-button.buttons-print {
+    background-color: #27ae60;
+}
+
+button.dt-button.buttons-print:hover {
+    background-color: #20bd62;
+}
+
+/* -----------------------  */
+.dt-buttons,
+div#documentsTable_filter {
+    padding: 20px 10px;
+}
+
+/* ----------  */
+table#documentsTable {
+    margin: 20px 0;
+    border-top: 1px solid;
+}
+
+/* -------------------- start ges_docs.php ----------------------- */
+.badge-expired {
+    background-color: #7f8c8d;
+}
+
+.badge-warning {
+    background-color: #f39c12;
+}
+
+.badge-danger {
+    background-color: #e74c3c;
+}
+
+.badge-info {
+    background-color: #3498db;
+}
+
+table#documentTable {
+    margin: 20px 0;
+    border-top: 1px solid;
+}
+
+div#documentTable_length,
+div#documentTable_filter {
+    margin: 10px 0 20px;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    border-radius: 5px;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+a.navbar-brand {
+    height: 95px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* -------------------- start ges_docs.php ----------------------- */
+/* -------------------- start gestion chauffeurs.php ----------------------- */
+.badge-busy {
+    background-color: #f39c12;
+}
+
+.badge-offline {
+    background-color: #e74c3c;
+}
+
+table#chauffeursTable {
+    margin: 20px 0;
+    vertical-align: middle;
+}
+
+div#chauffeursTable_wrapper {
+    overflow: auto;
+}
+
+.photo_profil_chauffeurs img{
+    border-radius: 5px; 
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --------------------------  */
+
+.btn-outline-primary:hover {
+    background: #0d6efd;
+    color: white;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.progress {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* ------------------------  */
+
+.card-img {
+    width: 138px;
+    height: 156px;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 2px solid #0d6efd;
+}
+
+.card-img.position-absolute{
+    top: 10px;
+    right: 10px;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border: 4px solid #fff;
+    border-radius: 10px;
+}
+
+canvas#consumptionChart, canvas#kmChart {
+    max-width: 500px !important;
+    max-height: 260px !important;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* -------------------- end gestion chauffeurs.php ----------------------- */
+/* -------------------- gestion des véhicules ----------------------- */
+.vehicle-card .card .card-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 10px;
+}
+
+.logo_marque_vehicule, .photo_profil_chauffeurs {
+    width: 70px;
+    height: 70px;
+    /* border: 1px solid red; */
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bs-popover-auto[data-popper-placement^=top]>.popover-arrow::after, .bs-popover-top>.popover-arrow::after {
+    border-top-color: #000000;
+}
+
+.calendar-placeholder {
+    background-color: #ecf0f1;
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    color: #7f8c8d;
+}
+
+#calendar {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 30px;
+}
+
+.card-img.logo_marque_vehicule {
+    width: 50px;
+    height: 50px;
+    border-radius:50%;
+}
+
+ul#suggestionsStart, ul#suggestionsEnd {
+    bottom: 45px;
+}
+/* --------------- calendar -------------  */
+
+.fc .fc-daygrid-day-top {
+    justify-content: center;
+}
+
+.fc .fc-toolbar {
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+div#assignmentTabsContent table a {
+    color: black;
+    text-decoration: none;
+}
+
+h2#fc-dom-1 {
+    padding: 5px 10px;
+    background-color: #a3908b;
+    border-radius: 25px;
+    color: #fff;
+}
+
+#calendar tbody, td, tfoot, th, thead, tr {
+    border-color: #000000;
+    border-width: 0px;
+}
+/* --------------------- popover--------------  */
+/* Personnalisation du fond du popover */
+.popover {
+    background-color: #7b2626; /* Couleur de fond */
+    border: 1px solid #dc3545; /* Bordure rouge */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Ombre */
+}
+
+/* Changer la couleur de la flèche du popover */
+.popover .arrow::before {
+    border-bottom-color: #000000 !important;
+}
+
+.bs-popover-auto[data-popper-placement^=bottom]>.popover-arrow::after, .bs-popover-bottom>.popover-arrow::after {
+    top: var(--bs-popover-border-width);
+    border-bottom-color: #000000;
+}
+
+/* Style du texte dans le popover */
+.popover-body {
+    color: #FFF; /* Texte foncé pour le contraste */
+}
+
+/* ------------------ Approvisionnement ------------------  */
+/* <!-- Style pour améliorer l'affichage des champs non modifiables -->  */
+
+    .calculated-field {
+        background-color: #f8f9fa;
+    }
+
+    .calculated-field input {
+        background-color: #e9ecef;
+        border-color: #ced4da;
+    }
+
+    .calculated-field .form-text {
+        display: block !important;
+        font-style: italic;
+        color: #6c757d;
+    }
+
+    .bg-light {
+        background-color: #f8f9fa !important;
+    }
+/* ----------------------------------Old CSS----------------------  */
+
+.dashboard-section {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-section h2 {
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+}
+
+.notification {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: background-color 0.3s ease;
+}
+
+.notification:hover {
+    background-color: #e9ecef;
+}
+
+.notification-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+}
+
+.notification-warning {
+    color: #f39c12;
+}
+
+.notification-danger {
+    color: #e74c3c;
+}
+
+.notification-info {
+    color: #3498db;
+}
+
+.quick-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.quick-link {
+    flex: 1 1 calc(25% - 1rem);
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.quick-link:hover {
+    background-color: #2980b9;
+}
+
+.quick-link i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.vehicle-status {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.vehicle-status-card {
+    flex: 1 1 calc(33.333% - 1rem);
+    padding: 1.5rem;
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vehicle-status-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.vehicle-status-card i {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.vehicle-status-available {
+    color: #27ae60;
+}
+
+.vehicle-status-in-use {
+    color: #f39c12;
+}
+
+.vehicle-status-maintenance {
+    color: #e74c3c;
+}
+/* ------------------------- connection ---------------- */
+
+ul.my_ul {
+    background-color: white;
+    border-radius: 10px;
+    padding: 0 10px;
+}
+
+.my_ul .nav-link:focus, .my_ul .nav-link:hover {
+    color: #0d6efd;
+}
+
+.notifications_Dropdown {
+    padding: 10px;
+}

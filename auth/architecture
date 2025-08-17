@@ -1,0 +1,37 @@
+auth/
+├── config/
+│   └── db_connect.php
+├── controllers/
+│   ├── auth_controller.php
+│   └── user_controller.php  
+├── services/
+│   ├── MailService.php
+│   └── SmsService.php
+├── models/
+│   └── User.php
+├── views/
+│   ├── login.php
+│   ├── register.php
+│   ├── register_super_admin.php
+│   ├── register_validateur.php
+│   ├── forgot_password.php
+│   ├── reset_password.php
+│   ├── dashboard.php
+│   ├── logout.php
+│   └── admin/
+│       ├── users_list.php
+│       ├── user_edit.php
+│       └── user_add.php
+└── includes/
+    ├── header.php
+    └── footer.php
+
+Note : le dossier auth/ est dans le dossier racine "gestion_flotte_automobile/"
+
+gestion_flotte_automobile/
+├── auth/
+├── vendor/
+│   ├── composer/
+│   ├── phpmailer/ 
+│   └── autoload.php
+├── index.php

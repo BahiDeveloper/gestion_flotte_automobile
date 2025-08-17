@@ -1,0 +1,12 @@
+==========POUR INSTALLER CORRECTEMNT=============
+1) Aller dans : /gestion_flotte_automobile/auth/config/
+Fichier : 
+    config.php
+        Action : Changer la route de la constante 'PROJECT_ROOT'
+    db_connect.php
+        Action : Configurer la connexion à la base de données
+
+2) Aller dans : /gestion_flotte_automobile/database/config.php
+    Action : Configurer la connexion à la base de données
+
+Merci pour votre comprehension.
