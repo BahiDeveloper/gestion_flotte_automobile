@@ -1,9 +1,4 @@
 <?php
-// config.php
-// $host = 'aescisyny.mysql.db'; // Adresse du serveur de base de données
-// $dbname = 'aescisyny'; // Nom de la base de données
-// $username = 'aescisyny'; // Nom d'utilisateur de la base de données
-// $password = 'Synylodge2024'; // Mot de passe de la base de données
 
 $host = 'localhost'; // Adresse du serveur de base de données
 $dbname = 'gestion_flotte'; // Nom de la base de données
