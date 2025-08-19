@@ -9,4 +9,7 @@ Fichier :
 2) Aller dans : /gestion_flotte_automobile/database/config.php
     Action : Configurer la connexion à la base de données
 
+3) Création de compte admin
+$ADMIN_CODE = 'AdminFlotte2025!';
+---------------------------------------------------
 Merci pour votre comprehension.
